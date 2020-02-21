@@ -29,4 +29,4 @@ jobs:
       - name: Run tests & quality check
         run: |
           mix test
-          mix code_quality
+          mix code.quality_check
