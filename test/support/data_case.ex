@@ -16,6 +16,8 @@ defmodule Ticote.DataCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Adapters.SQL
+
   using do
     quote do
       alias Ticote.Repo
@@ -28,10 +30,10 @@ defmodule Ticote.DataCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Ticote.Repo)
+    :ok = SQL.Sandbox.checkout(Ticote.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Ticote.Repo, {:shared, self()})
+      SQL.Sandbox.mode(Ticote.Repo, {:shared, self()})
     end
 
     :ok
